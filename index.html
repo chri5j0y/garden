@@ -1213,6 +1213,30 @@ $('#hero-cta').addEventListener('click', () => { S.mode = 'self'; S.tab = 'today
 setScale(); render();
 
 </script>
+<script>
+/* Read aloud, built in like Sapling */
+(function () {
+  function ready(fn) { if (window.GGRead) fn(); else window.addEventListener('ggread-ready', fn, { once: true }); }
+  ready(function () {
+    var R = window.GGRead, KEY = 'gg_read_garden', view = document.getElementById('view'), t = null;
+    if (!view) return;
+    R.setProfile({ pref: 'female', rate: 0.92, key: 'gg_voice_garden' });
+    function readView() { R.read(view); }
+    function ensureBar() {
+      if (view.querySelector(':scope > .gg-rbar')) return false;
+      view.insertBefore(R.toggle({ key: KEY, onRead: readView }), view.firstChild);
+      return true;
+    }
+    ensureBar();
+    var rd = window.render; if (rd) window.render = function () {
+      R.stop(); var r = rd.apply(this, arguments); ensureBar();
+      if (R.isOn(KEY)) { clearTimeout(t); t = setTimeout(readView, 450); }
+      return r;
+    };
+  });
+})();
+</script>
+<script src="https://growwithgrounded.com/read.js" defer></script>
 <script src="https://growwithgrounded.com/nav.js" defer></script>
 </body>
 </html>
