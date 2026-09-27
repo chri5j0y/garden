@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var m=document.cookie.match(/(?:^|; )gg_theme=(light|dark)/);var t=m?m[1]:localStorage.getItem("gg_theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);document.documentElement.style.colorScheme=t;}}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
@@ -40,23 +41,23 @@ body[data-season="planting"]{--accent:#7A5A3C;--accent-soft:rgba(122,90,60,.11);
 body[data-season="rooting"]{--accent:#3F5B3D;--accent-soft:rgba(63,91,61,.11);}
 body[data-season="blooming"]{--accent:#A8563E;--accent-soft:rgba(168,86,62,.10);}
 
-@media (prefers-color-scheme: dark){
-  :root{
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
     --bg:#151A14; --bg-deep:#0F130E; --card:#1D241C; --ink:#F2EEE4; --ink-soft:#B9B09F; --line:#313A2E;
     --gold:#D9A847; --gold-deep:#C8923A; --on-gold:#2C1810;
     --sage:#9AB58A; --sage-deep:#B3CBA4; --sage-soft:#243020; --cream:#F4EBDA;
     --shadow:0 1px 0 rgba(0,0,0,.2), 0 10px 28px rgba(0,0,0,.35);
-  }
-  body[data-season="planting"]{--accent:#C9A27A;--accent-soft:rgba(201,162,122,.12);}
-  body[data-season="rooting"]{--accent:#9AB58A;--accent-soft:rgba(154,181,138,.12);}
-  body[data-season="blooming"]{--accent:#E0937A;--accent-soft:rgba(224,147,122,.12);}
-}
+  }:root:not([data-theme="light"]) body[data-season="planting"]{--accent:#C9A27A;--accent-soft:rgba(201,162,122,.12);}:root:not([data-theme="light"]) body[data-season="rooting"]{--accent:#9AB58A;--accent-soft:rgba(154,181,138,.12);}:root:not([data-theme="light"]) body[data-season="blooming"]{--accent:#E0937A;--accent-soft:rgba(224,147,122,.12);}}:root[data-theme="dark"]{
+    --bg:#151A14; --bg-deep:#0F130E; --card:#1D241C; --ink:#F2EEE4; --ink-soft:#B9B09F; --line:#313A2E;
+    --gold:#D9A847; --gold-deep:#C8923A; --on-gold:#2C1810;
+    --sage:#9AB58A; --sage-deep:#B3CBA4; --sage-soft:#243020; --cream:#F4EBDA;
+    --shadow:0 1px 0 rgba(0,0,0,.2), 0 10px 28px rgba(0,0,0,.35);
+  }:root[data-theme="dark"] body[data-season="planting"]{--accent:#C9A27A;--accent-soft:rgba(201,162,122,.12);}:root[data-theme="dark"] body[data-season="rooting"]{--accent:#9AB58A;--accent-soft:rgba(154,181,138,.12);}:root[data-theme="dark"] body[data-season="blooming"]{--accent:#E0937A;--accent-soft:rgba(224,147,122,.12);}
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;scroll-padding-top:80px;}
 body{background:var(--bg);color:var(--ink);font-family:'Barlow',system-ui,sans-serif;font-size:calc(19px * var(--scale));line-height:1.7;position:relative;min-height:100vh;-webkit-font-smoothing:antialiased;}
 body::before{content:'';position:fixed;inset:0;background-image:var(--grain);opacity:.28;pointer-events:none;z-index:0;mix-blend-mode:multiply;}
-@media (prefers-color-scheme: dark){ body::before{opacity:.5;mix-blend-mode:soft-light;} }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body::before{opacity:.5;mix-blend-mode:soft-light;}}:root[data-theme="dark"] body::before{opacity:.5;mix-blend-mode:soft-light;}
 body > *{position:relative;z-index:1;}
 a{color:inherit;}
 button{font:inherit;color:inherit;}
@@ -163,7 +164,7 @@ h3{font-size:calc(28px * var(--scale));}
 .water-btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:calc(18px * var(--scale));display:inline-flex;align-items:center;gap:12px;border:0;border-radius:999px;padding:15px 28px 15px 20px;cursor:pointer;background:var(--gold);color:var(--on-gold);background-image:var(--grain);background-blend-mode:soft-light;box-shadow:0 8px 22px rgba(139,94,26,.32);}
 .water-btn svg{width:30px;height:30px;}
 .water-btn[disabled]{background:var(--sage);color:#fff;box-shadow:none;cursor:default;}
-@media (prefers-color-scheme: dark){ .water-btn[disabled]{color:#152014;} }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .water-btn[disabled]{color:#152014;}}:root[data-theme="dark"] .water-btn[disabled]{color:#152014;}
 .week-strip{display:flex;gap:6px;}
 .dot-day{width:30px;height:38px;border-radius:9px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Barlow',sans-serif;font-size:12px;color:var(--ink-soft);background:var(--card);}
 .dot-day i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--line);margin-top:3px;}
@@ -205,7 +206,7 @@ h3{font-size:calc(28px * var(--scale));}
 .daytype{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 20px;}
 .chip{font-family:'Barlow',sans-serif;font-size:calc(15px * var(--scale));font-weight:600;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:9px 16px;cursor:pointer;color:var(--ink-soft);}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
-@media (prefers-color-scheme: dark){ .chip[aria-pressed="true"]{color:#151A14;} }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#151A14;}}:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#151A14;}
 .rhythm{display:grid;gap:30px;}
 .rhythm-block h3{font-style:italic;font-weight:600;font-size:calc(31px * var(--scale));display:flex;align-items:center;gap:12px;margin-bottom:12px;}
 .rhythm-block h3 svg{width:28px;height:28px;color:var(--accent);}
@@ -336,7 +337,7 @@ label.lbl{font-family:'Barlow',sans-serif;font-size:calc(15px * var(--scale));fo
 .check svg{width:24px;height:24px;}
 .check:hover{border-color:var(--sage);color:color-mix(in srgb,var(--sage) 45%,transparent);}
 .check.on{background:var(--sage);border-color:var(--sage);color:#fff;}
-@media (prefers-color-scheme: dark){ .check.on{color:#152014;} }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .check.on{color:#152014;}}:root[data-theme="dark"] .check.on{color:#152014;}
 .water-card{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:30px;padding:24px 26px;border-radius:18px;border:1.5px dashed var(--line);background:var(--card);}
 .water-card h3{margin-bottom:4px;}
 .water-card > div{flex:1 1 300px;}
@@ -365,9 +366,7 @@ label.lbl{font-family:'Barlow',sans-serif;font-size:calc(15px * var(--scale));fo
     <a class="brand" href="https://growwithgrounded.com" aria-label="Grounded. home"><svg class="brand-tree" viewBox="0 0 3200 3536" aria-hidden="true"><use href="#g-icon"/></svg><svg class="brand-word" viewBox="0 0 6024 772" aria-hidden="true"><use href="#g-word"/></svg></a>
     <span class="brand-sep" aria-hidden="true">/</span>
     <a class="brand-tool" href="#top">Tending the Garden</a>
-    <nav class="site-nav" id="site-menu" aria-label="Main">
-      <a href="https://growwithgrounded.com">Home</a><a href="https://growwithgrounded.com/stories">Stories</a><a href="https://growwithgrounded.com/#tools" aria-current="page">Tools</a><a href="https://growwithgrounded.com/#about">About</a><a href="https://growwithgrounded.com/#work">Work With Me</a><a href="https://growwithgrounded.com/#contact">Contact</a>
-    </nav>
+    <nav class="site-nav" id="site-menu" aria-label="Main"><a href="https://growwithgrounded.com/">Home</a><a href="https://growwithgrounded.com/stories">Stories</a><a href="https://growwithgrounded.com/#tools">Tools</a><a href="https://growwithgrounded.com/ceremonies">Ceremonies</a><a href="https://growwithgrounded.com/our-story">Our Story</a><a href="https://growwithgrounded.com/#work">Work With Us</a><a href="https://growwithgrounded.com/#contact">Contact</a></nav>
     <button class="size-btn" id="size-btn" type="button" aria-label="Text size">A+</button>
     <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
@@ -397,8 +396,8 @@ label.lbl{font-family:'Barlow',sans-serif;font-size:calc(15px * var(--scale));fo
   <a class="foot-brand" href="https://growwithgrounded.com" aria-label="Grounded. home"><svg class="foot-tree" viewBox="0 0 4664 3536" aria-hidden="true"><use href="#g-tree"/></svg><svg class="foot-word" viewBox="0 0 6024 772" aria-hidden="true"><use href="#g-word"/></svg></a>
   <p class="foot-tag">Presence at life's thresholds.</p>
   <nav class="foot-links" aria-label="Footer">
-    <a href="https://growwithgrounded.com">Home</a><a href="https://growwithgrounded.com/stories">Stories</a><a href="https://soultree.growwithgrounded.com">Soul Tree</a><a href="#top">Tending the Garden</a><a href="https://sapling.growwithgrounded.com/">Sapling</a>
-    <a href="https://growwithgrounded.com/#about">About</a><a href="https://growwithgrounded.com/#work">Work With Me</a><a href="https://growwithgrounded.com/#contact">Contact</a>
+    <a href="https://growwithgrounded.com">Home</a><a href="https://growwithgrounded.com/stories">Stories</a><a href="https://growwithgrounded.com/ceremonies">Ceremonies</a><a href="https://soultree.growwithgrounded.com">Soul Tree</a><a href="#top">Tending the Garden</a><a href="https://sapling.growwithgrounded.com/">Sapling</a>
+    <a href="https://growwithgrounded.com/our-story">Our Story</a><a href="https://growwithgrounded.com/#work">Work With Us</a><a href="https://growwithgrounded.com/#contact">Contact</a>
     <a href="https://chri5j0y.substack.com/subscribe" target="_blank" rel="noopener">Subscribe</a>
   </nav>
   <p class="privacy">Free, from the makers of Grounded. Everything you enter stays on your device. Nothing is collected. This is a wellness practice, not medical care.</p>
